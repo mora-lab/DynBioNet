@@ -256,6 +256,23 @@ function(input, output, session) {
                     edges = nodes_edges$edges)
   })
   
+  #========================================================
+  # plot gene expression data
+  #========================================================
+  output$gene_expression_plot <- renderPlot({
+    req(input$dbname)
+    req(input$current_node_id)
+    print(input$current_node_id)
+    
+    source("Functions/plot_gene_expression.R")
+    plot_gene_expression(input$dbname, input$current_node_id$node)  
+    
+  })
+  
+  # output$shiny_return <- renderPrint({
+  #   input$current_node_id
+  # })
+  
   #=========================================================
   # 5.3 node and edge information output------
   #=========================================================
@@ -399,9 +416,22 @@ function(input, output, session) {
     nodes_edges <- genes_neighbor_rel()$nodes_edges
     req(nodes_edges$nodes)
     req(nodes_edges$edges)
-    source("Functions/plot_visNetwork.R")
-    plot_visNetwork(nodes = nodes_edges$nodes, 
+    source("Functions/plot_gnb_visNetwork.R")
+    plot_gnb_visNetwork(nodes = nodes_edges$nodes, 
                     edges = nodes_edges$edges)
+  })
+  
+  
+  #========================================================
+  # plot gene expression data
+  #========================================================
+  output$gnb_gene_expression_plot <- renderPlot({
+    req(input$gnb_dbname)
+    req(input$gnb_current_node_id)
+    # print(input$gnb_current_node_id)
+    source("Functions/plot_gene_expression.R")
+    plot_gene_expression(input$gnb_dbname, input$gnb_current_node_id$node)  
+    
   })
   
   #=========================================================

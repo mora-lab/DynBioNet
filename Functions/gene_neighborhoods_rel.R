@@ -1,7 +1,7 @@
 # dbname <- "my_data"
-# geneids <- "ABCB6"
-# groups <- c("COPD_smoker") #, "nonsmoker"
-# timepoints <- c("M0", "M03")
+# geneids <- "SLCO2B1"
+# groups <- c("COPD_smoker", "nonsmoker")
+# timepoints <- c("M0")
 # weights <- c(0, 0.7)
 # plotObject <- c("genes_to_genes","genes_to_kegg","genes_to_GO")
 

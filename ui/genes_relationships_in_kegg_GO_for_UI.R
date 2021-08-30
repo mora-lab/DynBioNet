@@ -67,7 +67,10 @@ nodes_edge_information <- tabsetPanel(type = "tabs",
                                 tabPanel("Node information",
                                          tabsetPanel(tabPanel('Gene Node', DT::dataTableOutput('node_genes_information')),
                                                      tabPanel('KEGG Node',DT::dataTableOutput('node_kegg_information')),
-                                                     tabPanel('GO Node', DT::dataTableOutput('node_go_information')))
+                                                     tabPanel('GO Node', DT::dataTableOutput('node_go_information')),
+                                                     tabPanel('Gene Exprssion', plotOutput("gene_expression_plot"))
+                                                     #tabPanel('Gene Exprssion', verbatimTextOutput("shiny_return"))
+                                                     )
                                          ),
                                 tabPanel('Edge information', DT::dataTableOutput('edges_information')),
                                 tabPanel('Network coordination scores', netScore),

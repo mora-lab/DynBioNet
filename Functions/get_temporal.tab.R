@@ -1,26 +1,21 @@
-# req(input$query_gene)
-# req(input$gnb_dbname)
-# gene_nodes <- genes_neighbor_rel()$gene_nodes 
-# temporal_rel <- genes_neighbor_rel()$temporal_rel
-# req(gene_nodes)
-# req(temporal_rel)
-# qgene <- input$query_gene
+################################################################################
+# title: get_temporal.tab
+# target: 获取gene neighbor 的时间变化表格
+# Input:
+# - dbname：数据库名称
+# - qgene：需要查询的基因
+# - qgroup：指定其组的名称
+# - gene_nodes：gene_neighborhoods_rel()结果中的gene_nodes
+# - x：gene_neighborhoods_rel()结果中的temporal_rel 
+# Output: 基因-时间的矩阵表格
 # 
-# 获取用户指定的数据库的具体信息-------
-# source("Functions/basic_info.R")
-# basic_info <- basic_info(userdb = input$gnb_dbname)
-# geneID_type <- basic_info$geneID_type
-# qgroup <- input$query_group
-# 
-# qgene <- gene_nodes %>% filter(ENTREZID %in% qgene | SYMBOL %in% qgene) %>% select(all_of(geneID_type)) %>% unique()
-# 
-# # temporal_rel <- temporal_rel %>% filter(fromNode %in% qgene | toNode %in% qgene)
-# temporal_rel_A <- temporal_rel %>% filter(fromNode %in% qgene) %>% select(toNode, all_of(qgroup))
-# colnames(temporal_rel_A) <- c("genes","timepoints")
-# temporal_rel_B <- temporal_rel %>% filter(toNode %in% qgene) %>% select(fromNode, all_of(qgroup))
-# colnames(temporal_rel_B) <- c("genes","timepoints")
-# temporal_rel <- rbind(temporal_rel_A, temporal_rel_B) %>% distinct()
+################################################################################
 
+
+
+# qgene <- "SLCO2B1"
+#  x <- temporal_rel
+# qgroup <- "nonsmoker"
 
 get_temporal.tab <- function(dbname,qgene,qgroup, gene_nodes, x){
   # 获取用户指定的数据库的具体信息-------
@@ -40,7 +35,7 @@ get_temporal.tab <- function(dbname,qgene,qgroup, gene_nodes, x){
   
   if (nrow(x) > 0){
     # 整理每一行的时间点，并形成一个新的表格
-	x <- na.omit(x) #删除NA值
+    x <- na.omit(x)
     x_list <- strsplit(x$timepoints, split = ", ")
     x_list_name <- x$genes
     names(x_list) <- x_list_name

@@ -203,7 +203,8 @@ genes_relationships_for_KEGG.GO <- function(dbname, keggids, goids, groups, time
               kegg_nodes = kegg_nodes, 
               gene_nodes = gene_nodes, 
               go_nodes = go_nodes, 
-              edges_info = edges_info))
+              edges_info = edges_info,
+              basic_info = basic_info))
   
 }
 
