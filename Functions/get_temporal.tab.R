@@ -40,6 +40,7 @@ get_temporal.tab <- function(dbname,qgene,qgroup, gene_nodes, x){
   
   if (nrow(x) > 0){
     # 整理每一行的时间点，并形成一个新的表格
+	x <- na.omit(x) #删除NA值
     x_list <- strsplit(x$timepoints, split = ", ")
     x_list_name <- x$genes
     names(x_list) <- x_list_name
