@@ -16,7 +16,8 @@ gnb_select_time_point <- checkboxGroupInput("gnb_timepoints", "Timepoints:",NULL
 
 
 #1.4 设置weight选项=================================================================
-gnb_select_weight <- sliderInput("gnb_Weight", "Weight:",  min = 0, max = 1, value = c(0,1))
+#gnb_select_weight <- sliderInput("gnb_Weight", "Weight:",  min = 0, max = 1, value = c(0,1))
+gnb_select_weight <- uiOutput("gnb_weight_ui")
 
 #1.5 设置画图的对象是genes_to_genes, 还是genes_to_kegg/go==============================
 gnb_plotObject_choices <- c("genes to genes" = "genes_to_genes",
@@ -71,7 +72,7 @@ gnb_nodes_information <- tabsetPanel(type = "tabs",
                                           tabsetPanel(tabPanel('Gene Node',DT::dataTableOutput('gnb_node_genes_information')),
                                                       tabPanel('KEGG Node',DT::dataTableOutput('gnb_node_kegg_information')),
                                                       tabPanel('GO Node', DT::dataTableOutput('gnb_node_go_information')),
-                                                      tabPanel('Gene Exprssion', plotOutput("gnb_gene_expression_plot"))
+                                                      tabPanel('Gene Expression', plotOutput("gnb_gene_expression_plot"))
                                                       )
                                           ),
                                  tabPanel('Edge Information', DT::dataTableOutput('gnb_edges_information')),

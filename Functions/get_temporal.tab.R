@@ -40,7 +40,8 @@ get_temporal.tab <- function(dbname,qgene,qgroup, gene_nodes, x){
     x_list_name <- x$genes
     names(x_list) <- x_list_name
     
-    tps <- sort(unique(unlist(x_list)))
+    #tps <- sort(unique(unlist(x_list))) #只包含有的时间点
+    tps <- sort(basic_info$timepoints) #使用所有时间点的
     y = as.data.frame(matrix(data = "no", nrow = nrow(x), ncol = length(tps), dimnames = list(x_list_name, tps) ))
     
     for (i in 1:nrow(x)){

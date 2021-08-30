@@ -24,13 +24,13 @@ if (!dir.exists("data/databases/user_data")){
 # 如果文件不存在就下载
 if (!file.exists("data/databases/kegg_GO_info/kegg_GO_info.sqlite")){
   downloader::download(url = "https://zenodo.org/record/5336148/files/kegg_GO_info.sqlite?download=1",
-                       destfile = "data/databases/kegg_GO_info/kegg_GO_info.sqlite", mode = "wb", quiet = TRUE)
+                       destfile = "data/databases/kegg_GO_info/kegg_GO_info.sqlite", mode = "wb")
 }
 
 # 下载COPD-data
 if (!file.exists("data/databases/user_data/COPD-data.sqlite")){
   downloader::download(url = "https://zenodo.org/record/5336148/files/COPD-data.sqlite?download=1",
-                       destfile = "data/databases/user_data/COPD-data.sqlite",mode = "wb", quiet = TRUE)
+                       destfile = "data/databases/user_data/COPD-data.sqlite",mode = "wb")
 }
 
 

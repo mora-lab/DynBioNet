@@ -21,7 +21,8 @@ select_time_point <- checkboxGroupInput("timepoints", "Timepoints:", NULL)
 select_groups <- selectInput("groups", "Groups:", NULL, selected = "COPD_smoker",multiple = T)
 
 #1.5 设置weight选项=================================================================
-select_weight <- sliderInput("Weight", "Weight:",min = 0, max = 1, value = c(0,1) )
+# select_weight <- sliderInput("Weight", "Weight:",min = 0, max = 1, value = c(0,1) )
+select_weight <- uiOutput("weight_ui")
 
 #1.6 设置画图的对象是genes_to_genes, 还是genes_to_kegg/go==============================
 plotObject_choices <- c("genes to genes" = "genes_to_genes",
@@ -68,7 +69,7 @@ nodes_edge_information <- tabsetPanel(type = "tabs",
                                          tabsetPanel(tabPanel('Gene Node', DT::dataTableOutput('node_genes_information')),
                                                      tabPanel('KEGG Node',DT::dataTableOutput('node_kegg_information')),
                                                      tabPanel('GO Node', DT::dataTableOutput('node_go_information')),
-                                                     tabPanel('Gene Exprssion', plotOutput("gene_expression_plot"))
+                                                     tabPanel('Gene Expression', plotOutput("gene_expression_plot"))
                                                      #tabPanel('Gene Exprssion', verbatimTextOutput("shiny_return"))
                                                      )
                                          ),

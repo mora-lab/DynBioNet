@@ -142,17 +142,28 @@ function(input, output, session) {
     updateSelectInput(session, "groups", choices = group_choices, selected = group_choices[1])
     
     #2.7 设置weight选项----
-    weights_select <- basic_info$weights
-    if (!is.null(weights_select)){
-      weights_select[1] <- floor(weights_select[1] ) #地板，不大于该数字的最大值
-      weights_select[2] <- ceiling(weights_select[2]) #天花板，不小于该数字的最小整数
-      updateSliderInput(session, "Weight", min = weights_select[1], max = weights_select[2], value = weights_select)
-    }else{
-      removeUI(selector = "div:has(> #Weight)")
-    }
+    # weights_select <- basic_info$weights
+    # if (!is.null(weights_select)){
+    #   weights_select[1] <- floor(weights_select[1] ) #地板，不大于该数字的最大值
+    #   weights_select[2] <- ceiling(weights_select[2]) #天花板，不小于该数字的最小整数
+    #   updateSliderInput(session, "Weight", min = weights_select[1], max = weights_select[2], value = weights_select)
+    # }else{
+    #   removeUI(selector = "div:has(> #Weight)")
+    # }
     
+    output$weight_ui <- renderUI({
+      weights_select <- basic_info$weights
+      if (!is.null(weights_select)){
+        weights_select[1] <- floor(weights_select[1] ) #地板，不大于该数字的最大值
+        weights_select[2] <- ceiling(weights_select[2]) #天花板，不小于该数字的最小整数
+        select_weight <- sliderInput("Weight", "Weight:",min = weights_select[1], max = weights_select[2], value = weights_select)
+      }
+      
+    })
     
   })
+  
+  
 
   #######################################################
   # 3. 选项值更新（设置输入值的选择） Genes Neighborhoods Relationships----------
@@ -186,14 +197,24 @@ function(input, output, session) {
     updateSelectInput(session, "gnb_groups", choices = group_choices, selected = group_choices[1])
 
     #3.6 设置weight选项----
-    weights_select <- basic_info$weights
-    if (!is.null(weights_select)){
-      weights_select[1] <- floor(weights_select[1] ) #地板，不大于该数字的最大值
-      weights_select[2] <- ceiling(weights_select[2]) #天花板，不小于该数字的最小整数
-      updateSliderInput(session, "gnb_Weight", min = weights_select[1], max = weights_select[2], value = weights_select) 
-    }else{
-      removeUI(selector = "div:has(> #gnb_Weight)")
-    }
+    # weights_select <- basic_info$weights
+    # if (!is.null(weights_select)){
+    #   weights_select[1] <- floor(weights_select[1] ) #地板，不大于该数字的最大值
+    #   weights_select[2] <- ceiling(weights_select[2]) #天花板，不小于该数字的最小整数
+    #   updateSliderInput(session, "gnb_Weight", min = weights_select[1], max = weights_select[2], value = weights_select) 
+    # }else{
+    #   removeUI(selector = "div:has(> #gnb_Weight)")
+    # }
+    
+    output$gnb_weight_ui <- renderUI({
+      weights_select <- basic_info$weights
+      if (!is.null(weights_select)){
+        weights_select[1] <- floor(weights_select[1] ) #地板，不大于该数字的最大值
+        weights_select[2] <- ceiling(weights_select[2]) #天花板，不小于该数字的最小整数
+        select_weight <- sliderInput("gnb_Weight", "Weight:",min = weights_select[1], max = weights_select[2], value = weights_select)
+      }
+      
+    })
 
   })
   
@@ -210,7 +231,6 @@ function(input, output, session) {
     #4.2 设置组别选项,组别设置成可多选----
     group_choices <- basic_info$groups
     updateSelectInput(session, "al_groups", choices = group_choices, selected = group_choices[1])
-
 
   })
   
