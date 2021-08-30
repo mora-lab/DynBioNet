@@ -541,7 +541,7 @@ function(input, output, session) {
   #更新query_gene选项值
   #-------------------
   observe({ updateSelectInput(session, "query_gene", choices = input$gnb_genes, selected = input$gnb_genes[1])})
-  observe({ updateSelectInput(session, "query_group", choices = input$gnb_groups, selected = input$gnb_groups)})
+  observe({ updateSelectInput(session, "query_group", choices = input$gnb_groups, selected = input$gnb_groups[1])})
   
   #query_gene
   output$temporal_information <- DT::renderDataTable({
