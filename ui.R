@@ -7,7 +7,7 @@ source("ui/genes_relationships_in_kegg_GO_for_UI.R")
 # #Interface for gene neighborhood
 source("ui/genes_neighborhood_for_UI.R")
 # #Interface for alluvial_diagram
-source("UI/alluvial_diagram_for_UI.R")
+source("ui/alluvial_diagram_for_UI.R")
 
 
 # upload_data_UI
