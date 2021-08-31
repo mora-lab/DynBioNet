@@ -5,7 +5,8 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 	install.packages("BiocManager", dependencies = TRUE)
 	
 requiredPackages <- c("visNetwork", "stringr", "ggalluvial", "ggplot2", "shiny","DT", 
-						"tidyverse","dplyr","xlsx", "readr", "tidyr", "RColorBrewer","RSQLite","downloader")			  
+						"tidyverse","dplyr","xlsx", "readr", "tidyr", "RColorBrewer",
+						"RSQLite","downloader","igraph")			  
 newPackages <- requiredPackages[!(requiredPackages %in% installed.packages()[,"Package"])]
 if(length(newPackages)) BiocManager::install(newPackages, ask = TRUE)
 
