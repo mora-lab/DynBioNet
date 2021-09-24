@@ -33,7 +33,12 @@ Cite us as: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease th
 ## 5. Alluvial diagram:
 
 ## 6. Help us improving DynBioNet:
-6.1. Report bugs:<br>
+6.1. Report bugs: You can report any bugs or mistakes to <br><br>
 6.2. Adding new functionality:<br>
+* global.R file: This file calls the required libraries and install the data files if necessary. Please update it if you are using new libraries or installing new datasets.<br>
+* server.R file: This file<br>
+* ui.R file: This file<br>
+* ui folder: This folder contains one R script for each of the current tabs of DynBioNet. If you add a new tab, please add a new R file here.<br>
+* data folder: This folder<br>
 
 *Last reviewed: Sep.24th, 2021*
