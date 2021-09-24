@@ -1,5 +1,6 @@
 # DynBioNet
-A shiny app to visualize and explore dynamic (temporal) biological networks (such as correlation networks and others)<br>
+A shiny app to visualize and explore dynamic (temporal) biological networks (such as correlation networks and others).<br>
+Cite us as: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease through visualization and analysis of dynamic biological networks, Under review.<br>
 
 ## 1. Install DynBioNet:
 1.1. From Github:<br>
