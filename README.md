@@ -31,6 +31,8 @@ A shiny app to visualize and explore dynamic (temporal) biological networks (suc
 
 ## 5. Alluvial diagram:
 
-## 6. Report bugs:
+## 6. Help us improving DynBioNet:
+6.1. Report bugs:
+6.2. Adding new functionality:
 
-*Last reviewed: Sep.24th, 2021
+*Last reviewed: Sep.24th, 2021*
