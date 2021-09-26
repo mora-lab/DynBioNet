@@ -79,7 +79,7 @@ gene_neighborhoods_rel <- function(dbname, geneids, groups, timepoints, weights,
     }
     
     # 转换成visNetwork作图需要的节点=========
-  }
+  }else{temporal_rel <- NULL}
   
   # 根据plot的要求==========
   # 如果对gene-to-kegg作图，根据基因id，获取gene-to-kegg的关系
