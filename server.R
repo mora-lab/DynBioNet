@@ -584,8 +584,8 @@ function(input, output, session) {
   output$gnb_net_go_num <- renderText({paste0("GO term: ",gnb_stats_info()$GO_num)})
   output$gnb_net_kegg_num <- renderText({paste0("KEGG pathway: ",gnb_stats_info()$kegg_num)})
   #===========number of GO/KEGG per gene=====================================
-  output$gnb_net_kegg_num_per_gene <- renderText({paste0("KEGG pathway: ",round(gnb_stats_info()$edge_gk_num_per_gene),2)})
-  output$gnb_net_go_num_per_gene <- renderText({paste0("GO term: ",round(gnb_stats_info()$edge_ggo_num_per_gene),2)})
+  output$gnb_net_kegg_num_per_gene <- renderText({paste0("KEGG pathway: ",round(gnb_stats_info()$edge_gk_num_per_gene,2))})
+  output$gnb_net_go_num_per_gene <- renderText({paste0("GO term: ",round(gnb_stats_info()$edge_ggo_num_per_gene,2))})
   
   #-------------------
   #更新query_gene选项值
