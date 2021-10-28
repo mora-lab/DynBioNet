@@ -20,7 +20,7 @@ sudo docker run -d \
 
 After run the command, you can visit http://localhost:3838/DynBioNet/ to using the shiny app.
 
-The scripts of DynBioNet locate in `srv/shiny-server/` folder in the container.
+The scripts of DynBioNet locate in `/srv/shiny-server/` folder in the container.
 
 ### 1.3. From Virtual Machine: https://zenodo.org/deposit/5539480<br>
 
@@ -28,6 +28,7 @@ Download `DynBioNet-VM.ova` and import this VirtualBox using Oracle [VM VirtualB
 
 After start this VirtualBox, log in using `moralab` as user and password, open the Firefox browser can see the DynBioNet interface. Or visit the address http://localhost:3838/DynBioNet/.
 
+The scripts of DynBioNet locate in `/srv/shiny-server/DynBioNet/` folder.
 
 
 ## 2. Upload data:
