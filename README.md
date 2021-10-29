@@ -1,5 +1,5 @@
 # DynBioNet
-'DynBioNet' is a shiny app to visualize and explore dynamic (temporal) biological networks.<br><br>
+'DynBioNet' is a shiny app to visualize and explore dynamic (temporal) biological networks.<br>
 
 For more details on the importance of dynamic biological networks and some applications of 'DynBioNet', see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease through visualization and analysis of dynamic biological networks, Under review.<br>
 
@@ -39,36 +39,30 @@ After starting this Virtual Machine, log in using `moralab` as user and password
 
 The scripts of DynBioNet are located in the `/srv/shiny-server/DynBioNet/` folder.
 
-## 2. Upload data:
-### 2.1. The input files
+## 2. Uploading data:
+This is the first tab of the app.<br>
 
-The input files has design file, expression data file, edges(network) file, module file. We made example input files at https://zenodo.org/record/5336148#.YXoqPp7P2Uk.
+### 2.1. The input files:
+DynBioNet receives four input files: `design file`, `expression data file`, `edges(network) file`, and `module file`. We have built some examples of input files at https://zenodo.org/record/5336148#.YXoqPp7P2Uk.
 
-- **Design file** is a CSV file which has `sample`, `group` and `timepoint` columns. The `timepoint` column should made time character ordered as you want. For example, `3 months` sets `M03` to replace `M3`.
-- **Expression data file** is for plot gene expression violin figure. The first column is `gene` which has the same of gene identifier of edges file.
-
-- **Edges (network) file** is a CSV file which has `fromNode`, `toNode`, `weight`, `timepoint`, `group` column. We suggest using SYMBOL gene identifier for `fromeNode` and `toNode`. Edges file can be merged from the results of the function `exportNetworkToCytoscape()` of `WGCNA` package. This file designs two nodes (genes) has relationship over time.
-
-- **Module file** is to plot alluvial diagram. Module file has `nodeName`, `timepoint`, `group` and `module` columns. <br>
-
-  
+- **Design file** is a CSV file which contains the `sample`, `group` and `timepoint` columns. The `timepoint` column should contain the names of the time-points, whcih should be ordered. For example, `month zero`, `month 3`, `month 6` and `month 12`, became `M0`, `M03`, `M06`, and `M12`.<br>
+- **Expression data file** includes gene expression data that will be used to build the violin plot of each gene. The first column is `gene`, which uses the same gene identifier than the `edges file`.<br>
+- **Edges (network) file** is a CSV file with the network represented as an edge list, including the `fromNode`, `toNode`, `weight`, `timepoint`, and `group` columns. We recommend using SYMBOL gene identifiers for `fromeNode` and `toNode`. The `Edges file` can be obtained from the function `exportNetworkToCytoscape()` of the `WGCNA` package, or from any graphical package in `R` such as `graph` or `igraph`.<br>
+- **Module file** is a description of the subnetworks that the user wants to analyze, and it is essentially used to plot the alluvial diagram. The module file has the `nodeName`, `timepoint`, `group` and `module` columns. <br>
 
 ### 2.2. Browsing the four input files from DynBioNet:<br>
-
-After you submit all files, the table of your corresponding files will be displayed on the right side of the page `Upload your data`. We set the size of a single file less than 500MB in `global.R`  file.
-
-
+After you submit all files (press `Submit` button of the page `Upload your data`), the corresponding files will be displayed as tables on the right side of the screen. Note that the size of each input file has been set to a maximum of 500MB in the `global.R` file.
 
 ## 3. KEGG pathway and GO term subnetwork analysis:
-### 3.1. Biological example. <br>
+This is the second tab of the app.<br>
 
-The networks for genes in `Human cytomegalovirus infection` KEGG pathway over time with COPD smoker group.
+### 3.1. Biological example:
+Our first goal is to check the evolution of the dynamic networks inside a given pathway or GO term along time. Our example (default data in the software) is a dynamic coexpression network built with expression data from three groups (non-smokers, healthy smokers, and smokers with COPD) and four time-points (0, 3, 6, and 12 months). From our study case, we have chosen the `COPD smoker group`, the `Human cytomegalovirus infection` KEGG pathway, and the gene-gene view, to show an example of DynBioNet visualizations.
 
 <img src="README.assets/Human-cytomegalovirus-infection.png" alt="Human-cytomegalovirus-infection" style="zoom: 25%;" />
 
-
-
 ### 3.2. Input data. <br>
+The following are the basic input commands of the `KEGG` and `GO` tab:<br>
 
 - **Select your data**: The options from your uploaded data. We set an example option is `COPD-data` .
 - **KEGG ID or KEGG pathway**: After you upload the `edges file`, the shiny app will automatically match genes to KEGG pathways and product the options. You can input one or more KEGG ID (or description) to filter the genes. If you didn't input KEGG ID or description, it will choose all genes.
@@ -110,6 +104,8 @@ The tab collect genes number, KEGG number, GO number, edges number and others.
 The `Download`  tab supports download excel file of `gene nodes`,  `KEGG nodes`, `GO nodes` and `edges`  information.
 
 ## 4. Gene neighborhood analysis:
+This is the third tab of the app.<br>
+
 ### 4.1. Biological example.<br>
 
 The networks for `IL1β` genes over time with COPD smoker group. 
@@ -150,6 +146,7 @@ Specify one gene neighborhood memberships over time with specify group in one ta
 The `Download`  tab supports download excel file of `gene nodes`,  `KEGG nodes`, `GO nodes` and `edges`  information.
 
 ## 5. Alluvial diagram:
+This is the fourth tab of the app.<br>
 
 The alluvial diagram depicts the changes in the clustering of genes over time with specify group.
 
