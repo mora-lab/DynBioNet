@@ -18,7 +18,7 @@ The previous commands will download data from [zenodo](https://zenodo.org/record
 
 ### 1.2. From Docker: https://hub.docker.com/r/moralab/dynbionet<br>
 
-If you have installed Docker (here, [how to install Docker]()), run the following commands in a terminal:
+If you have installed Docker (here, [how to install Docker](https://github.com/mora-lab/installing/tree/main/docker)), run the following commands in a terminal:
 
 ```shell
 sudo docker run -d \
@@ -33,7 +33,7 @@ Note that the scripts of DynBioNet are located in the `/srv/shiny-server/` folde
 
 ### 1.3. From Virtual Machine: https://zenodo.org/deposit/5539480<br>
 
-If you have installed the 'VirtualBox' Virtual Machine (here, [how to install VirtualBox]()), download the file `DynBioNet-VM.ova` from [Zenodo]() and import this appliance to 'VirtualBox' (here, [how to import an .ova file]()). 
+If you have installed the 'VirtualBox' Virtual Machine (here, [how to install VirtualBox](https://github.com/mora-lab/installing/tree/main/virtualbox)), download the file `DynBioNet-VM.ova` from [Zenodo]() and import this appliance to 'VirtualBox' (here, [how to import an .ova file](https://github.com/mora-lab/installing/tree/main/virtualbox_impo_expo)). 
 
 After starting this Virtual Machine, log in using `moralab` as user and password, open the Firefox browser, and you will see the DynBioNet interface. As an alternative, visit the address http://localhost:3838/DynBioNet/.
 
@@ -57,49 +57,51 @@ After you submit all files (press `Submit` button of the page `Upload your data`
 This is the second tab of the app.<br>
 
 ### 3.1. Biological example:
-Our first goal is to check the evolution of the dynamic networks inside a given pathway or GO term along time. Our example (default data in the software) is a dynamic coexpression network built with expression data from three groups (non-smokers, healthy smokers, and smokers with COPD) and four time-points (0, 3, 6, and 12 months). From our study case, we have chosen the `COPD smoker group`, the `Human cytomegalovirus infection` KEGG pathway, and the gene-gene view, to show an example of DynBioNet visualizations.
+Our first goal is to check the evolution of the dynamic networks inside a given pathway or GO term along time. Our example (default data in the software) is a dynamic coexpression network built with expression data from three groups (non-smokers, healthy smokers, and smokers with COPD) and four time-points (0, 3, 6, and 12 months). The original data comes from: O'Beirne, S.L., et al. Ambient Pollution-related Reprogramming of the Human Small Airway Epithelial Transcriptome. Am J Respir Crit Care Med 2018;198(11):1413-1422.<br>
+
+From our study case, we have chosen the `COPD smoker` group, the `Human cytomegalovirus infection` KEGG pathway, and the `genes to genes` view, to show an example of DynBioNet visualizations.
 
 <img src="README.assets/Human-cytomegalovirus-infection.png" alt="Human-cytomegalovirus-infection" style="zoom: 25%;" />
 
 ### 3.2. Input data. <br>
 The following are the basic input commands of the `KEGG` and `GO` tab:<br>
 
-- **Select your data**: The options from your uploaded data. We set an example option is `COPD-data` .
-- **KEGG ID or KEGG pathway**: After you upload the `edges file`, the shiny app will automatically match genes to KEGG pathways and product the options. You can input one or more KEGG ID (or description) to filter the genes. If you didn't input KEGG ID or description, it will choose all genes.
-- **GO ID or GO term**: After you upload the `edges file`, the shiny app will automatically match genes to GO terms and product the options. You can input one or more GO ID (or term) to filter the genes.  If you didn't input any GO ID or term, it will choose all genes.
-- **Groups**: The options are from `group` column in`design file` you uploaded. 
-- **Timepoints**: The options are from `timepoint` column in `design file` you uploaded. 
-- **Weight:** The slider can be set the maximum and minimum. The limit values are from `weight` in `edges file` . If the `weight` column not in the `edge file`, it will not show this slider. As default, it will filter all weights of edges with timepoints or groups.
-- **Plot**: It has three options. `genes to genes` plots genes relationships. `genes to KEGG` plots genes from KEGG pathway. `genes to GO` plots genes from GO. You can choose  one or more options. If you didn't choose option, it will not plot network.
+- **Select your data**: It is possible to set a name for your project, and then you can switch between different datasets/projects. For example, you can observe that our default dataset is called `COPD-data`.
+- **KEGG ID or KEGG pathway**: You can input one or more KEGG IDs (or pathway names) to extract such subnetwork from the full network. If you don't input a KEGG ID or description, the software will choose the entire network.
+- **GO ID or GO term**: You can input one or more GO IDs (or GO terms) to extract such subnetwork from the full network. If you don't input any GO ID or GO term, the software will choose the entire network.
+- **Groups**: You should select one or more of the different groups that are being compared in the experiment, which are extracted from the `group` column in the uploaded `design file`. 
+- **Timepoints**:  You should select one or more time-points, which come from the `timepoint` column in the `design file` you uploaded. 
+- **Weight:** The value of the weight of the edges (in our example, the correlation coefficient between the two nodes) can be used as a threshold to decide if an edge should be included or removed from the graph. The slider can be used to set maximum and minimum values (ideally, an edge should appear if 0.50 < r < 1.00, and no edge should appear if r < 0.50, but smaller values can also be accepted depending on the analysis). The weight values come from the `weight` column in the `edges file`. If the `weight` column is not included in the `edge file` (unweighted network), the slider will not be shown. *As default, it will filter all weights of edges with timepoints or groups.*??
+- **Plot**: There are three plotting options. `genes to genes` plots edges from genes to genes. `genes to KEGG` plots edges from genes to KEGG pathways. `genes to GO` plots edges from genes to GO terms. You can choose one or more options. If you don't choose any option, no network will be plotted.
 
-### 3.3. Network visualization. <br>
+### 3.3. Network visualization:<br>
+The network visualization is built using the `visNewtwork` R package. You can zoom in and zoom out, move nodes, and edit this network. It does also support downloading of the plot.
 
-Network plot by `visNewtwork` R package. You can zoom in and zoom out, move, edit this network. There also support download the plot as you see.
+- **Hover over nodes and edges**: When your mouse hovers over nodes or edges, it will show you the node or edge details.
+- **Move**: You can drag and move nodes and edges in any way you want.
+- **Edit**: When you select one node and click `Edit`, you will get the options `Add Node`, `Add Edge`, `Edit Node` and `Delete selected` node. When you select one edge, you can `Add Edge`, `Edit Edge` and `Delete selected` edge.
+- **Colors**: In the case you select one only group, nodes and edges have colors that indicate time-point-related information. Different edge colors represent a different edge type (for example, if edge1 is found in M03 and M06, edge2 the same, edge3 in M06 only, and edge4 in M06 and M12, that means that edge1 and edge2 will have the same color, different to edge3 and different to edge4). On the other hand, nodes with the same color represent nodes that share the same types of edge types (for example, if node1 has red edge and blue edge, node2 the same, node3 only blue edge, and node4 only red edge, then the two first nodes will have the same color, different to the third and fourth. Edge types, and colors, are extracted from the `timepoint` columns in `edge file` for a given group.
 
-- **Edit**: When you selected one node and click `Edit`, you can `Add Node`, `Add Edge`, `Edit Node` and `Delete selected` node. When you selected one edge, you can `Add Edge`, `Edit Edge` and `Delete selected` edge.
-- **Move**: you can move nodes and edges as network form you want. When your mouse move to the node, it will show you the node details. It is the same of moving mouse to the edge.
-- **Colors**: When you only choose one group, different colors nodes means the nodes have different type edges, while different colors edges means the different type edges. We set the edges type from `timepoint` and `group` in `edge file`.
+### 3.4. Results:<br>
+Results can be found at the bottom of the shiny interface.
 
-
-
-### 3.4. Node information. <br>
-
-In the bottle of the shiny interface, `Node information` has `Gene Node`, `KEGG Node`, `GO Node`, and `Gene Expression` subtable.
+### 3.4.1. Node information:<br>
+`Node information` has `Gene Node`, `KEGG Node`, `GO Node`, and `Gene Expression` subtable.
 
 - **Gene Node**: to record the genes information in the network plot.
 - **KEGG Node**: to record the KEGG information in the network plot.
 - **GO Node**: to record the GO information in the network plot.
 - **Gene Expression**: using data from `expression data file` to plot violin figure when your mouse move to gene node in the network.
 
-### 3.5. Edge information. <br>
+### 3.4.2. Edge information:<br>
 
 **Edge information** record all edge information in the network. 
 
-### 3.6. Network coordination scores. <br>
+### 3.4.3. Network coordination scores:<br>
 
 The tab collect genes number, KEGG number, GO number, edges number and others.
 
-### 3.7. Download. <br>
+### 3.5. Download:<br>
 
 The `Download`  tab supports download excel file of `gene nodes`,  `KEGG nodes`, `GO nodes` and `edges`  information.
 
