@@ -1,15 +1,24 @@
 # DynBioNet
-A shiny app to visualize and explore dynamic (temporal) biological networks (such as correlation networks and others).<br>
-Cite us as: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease through visualization and analysis of dynamic biological networks, Under review.<br>
+'DynBioNet' is a shiny app to visualize and explore dynamic (temporal) biological networks.<br><br>
 
-## 1. Install DynBioNet:
-### 1.1. From Github:  https://github.com/mora-lab/DynBioNet<br>
+For more details on the importance of dynamic biological networks and some applications of 'DynBioNet', see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease through visualization and analysis of dynamic biological networks, Under review.<br>
 
-Of course, you could run this shinyApp directly using `shiny::runApp("mora-lab/DynBioNet")` with R. But it will re-download data from [zenodo](https://zenodo.org/record/5336148#.YXoqPp7P2Uk) when you run this shiny each time. Therefore, we recommand you run this shinyApp using `shiny::runApp()` after downloading the repository to avoid the need to download data each time.
+## 1. Installing DynBioNet:
+There are three different ways to run DynBioNet:
+
+### 1.1. From Github (using R):  https://github.com/mora-lab/DynBioNet<br>
+
+Run the app directly from **R** using:
+```R
+library(shiny)
+shiny::runApp("mora-lab/DynBioNet")
+```
+
+The previous commands will download data from [zenodo](https://zenodo.org/record/5336148#.YXoqPp7P2Uk) each time you run this app. Therefore, we recommand you to run this shinyApp using `shiny::runApp()` after downloading the repository to avoid the need to download data each time.
 
 ### 1.2. From Docker: https://hub.docker.com/r/moralab/dynbionet<br>
 
-Run command in terminal
+If you have installed Docker (here, [how to install Docker]()), run the following commands in a terminal:
 
 ```shell
 sudo docker run -d \
@@ -18,18 +27,17 @@ sudo docker run -d \
      moralab/dynbionet:latest
 ```
 
-After run the command, you can visit http://localhost:3838/DynBioNet/ to using the shiny app.
+After running the previous commands, open your web browser and visit http://localhost:3838/DynBioNet/ to use the shiny app.<br>
 
-The scripts of DynBioNet locate in `/srv/shiny-server/` folder in the container.
+Note that the scripts of DynBioNet are located in the `/srv/shiny-server/` folder in the container.
 
 ### 1.3. From Virtual Machine: https://zenodo.org/deposit/5539480<br>
 
-Download `DynBioNet-VM.ova` and import this VirtualBox using Oracle [VM VirtualBox](https://www.virtualbox.org/). 
+If you have installed the 'VirtualBox' Virtual Machine (here, [how to install VirtualBox]()), download the file `DynBioNet-VM.ova` from [Zenodo]() and import this appliance to 'VirtualBox' (here, [how to import an .ova file]()). 
 
-After start this VirtualBox, log in using `moralab` as user and password, open the Firefox browser can see the DynBioNet interface. Or visit the address http://localhost:3838/DynBioNet/.
+After starting this Virtual Machine, log in using `moralab` as user and password, open the Firefox browser, and you will see the DynBioNet interface. As an alternative, visit the address http://localhost:3838/DynBioNet/.
 
-The scripts of DynBioNet locate in `/srv/shiny-server/DynBioNet/` folder.
-
+The scripts of DynBioNet are located in the `/srv/shiny-server/DynBioNet/` folder.
 
 ## 2. Upload data:
 ### 2.1. The input files
@@ -141,22 +149,29 @@ Specify one gene neighborhood memberships over time with specify group in one ta
 
 The `Download`  tab supports download excel file of `gene nodes`,  `KEGG nodes`, `GO nodes` and `edges`  information.
 
-
-
 ## 5. Alluvial diagram:
 
 The alluvial diagram depicts the changes in the clustering of genes over time with specify group.
 
 <img src="README.assets/Alluvial-diagram.png" alt="Alluvial-diagram" style="zoom:40%;" />
 
-## 6. Help us improving DynBioNet:
-### 6.1. Report bugs: You can report any bugs or mistakes to our email:<br>
+## 6. Troubleshooting:
+A list of possible problems:<br><br>
 
-Huang Xiaowei: h15016211223@163.com
+### DynBioNet VM:
+* Error "Change Network Settings": In VirtualBox, go to Settings -> Network, and make 'Attached to'='NAT'.
+* Error "Failed to open a session" (E_FAIL): Known problem with VirtualBox 6.1.28 (better install v 6.1.26 or earlier).
 
-Antonio Mora: antoniocmora@gzhmu.edu.cn 
+## 7. How to cite DynBioNet:
+Huang, X. and Mora, A. (2021), DynBioNet –Understanding development and disease through visualization and analysis of dynamic biological networks, Under review.<br>
+ 
+## 8. Help us improving DynBioNet:
+### 8.1. Report bugs:<br>
+You can report any bugs or mistakes to our email:<br>
+Huang Xiaowei: h15016211223@163.com<br>
+Antonio Mora: antoniocmora@gzhmu.edu.cn<br> 
 
-### 6.2. Adding new functionality:<br>
+### 8.2. Adding new functionality:<br>
 
 * `global.R` file: This file calls the required libraries and install the data files if they haven't been installed yet. Please update it if you are using new libraries or installing new datasets.<br>
 * `server.R` file: This file included all server functions for the DynBioNet.<br>
@@ -164,4 +179,4 @@ Antonio Mora: antoniocmora@gzhmu.edu.cn
 * `ui folder`: This folder contains one R script for each of the current tabs of DynBioNet, which contain the main computations for each tab. If you add a new tab, please add a new R file here.<br>
 * `Functions folder:` This folder contains all the functions for very specific tasks such as getting data or plotting data, which are called by the main routines. Place here any new function that will be called by the main routines.<br>
 
-*Last reviewed: Oct. 28th, 2021*
+*Last reviewed: Oct. 29th, 2021*
