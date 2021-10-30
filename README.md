@@ -1,7 +1,9 @@
+<img src="https://github.com/mora-lab/mora-lab.github.io/blob/master/picture/MORALAB_Banner.png">
+
 # DynBioNet
 'DynBioNet' is a shiny app to visualize and explore dynamic (temporal) biological networks.<br>
 
-For more details on the importance of dynamic biological networks and some applications of 'DynBioNet', see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease through visualization and analysis of dynamic biological networks, Under review.<br>
+> For more details on the importance of dynamic biological networks and some applications of 'DynBioNet', see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease through visualization and analysis of dynamic biological networks, Under review.<br>
 
 ## 1. Installing DynBioNet:
 There are three different ways to run DynBioNet:
@@ -29,7 +31,7 @@ sudo docker run -d \
 
 After running the previous commands, open your web browser and visit http://localhost:3838/DynBioNet/ to use the shiny app.<br>
 
-Note that the scripts of DynBioNet are located in the `/srv/shiny-server/` folder in the container.
+> Note that the scripts of DynBioNet are located in the `/srv/shiny-server/` folder in the container.
 
 ### 1.3. From Virtual Machine: https://zenodo.org/deposit/5539480<br>
 
@@ -37,7 +39,7 @@ If you have installed the 'VirtualBox' Virtual Machine (here, [how to install Vi
 
 After starting this Virtual Machine, log in using `moralab` as user and password, open the Firefox browser, and you will see the DynBioNet interface. As an alternative, visit the address http://localhost:3838/DynBioNet/.
 
-The scripts of DynBioNet are located in the `/srv/shiny-server/DynBioNet/` folder.
+> The scripts of DynBioNet are located in the `/srv/shiny-server/DynBioNet/` folder.
 
 ## 2. Uploading data:
 This is the first tab of the app.<br>
