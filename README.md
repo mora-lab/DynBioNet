@@ -3,7 +3,7 @@
 # DynBioNet
 'DynBioNet' is a shiny app to visualize and explore dynamic (temporal) biological networks.<br>
 
-> For more details on the importance of dynamic biological networks and some applications of 'DynBioNet', see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding disease through visualization and analysis of dynamic biological networks, Under review.<br>
+> For more details on the importance of dynamic biological networks and some applications of 'DynBioNet', see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding development and disease through visualization and analysis of dynamic biological networks (Under review).<br>
 
 ## 1. Installing DynBioNet:
 There are three different ways to run DynBioNet:
@@ -48,7 +48,7 @@ This is the first tab of the app.<br>
 Our example (default data in the software) is a dynamic coexpression network built with expression data from three groups (non-smokers, healthy smokers, and smokers with COPD) and four time-points (0, 3, 6, and 12 months). The original data comes from: O'Beirne, S.L., et al. Ambient Pollution-related Reprogramming of the Human Small Airway Epithelial Transcriptome. Am J Respir Crit Care Med 2018;198(11):1413-1422 ([html](https://www.atsjournals.org/doi/10.1164/rccm.201712-2526OC), [pdf](https://www.atsjournals.org/doi/pdf/10.1164/rccm.201712-2526OC)).<br>
 
 ### 2.2. The input files:
-DynBioNet receives four input files: `design file`, `expression data file`, `edges(network) file`, and `module file`.
+DynBioNet receives four input files: `design file`, `expression data file`, `edges (network) file`, and `module file`.
 
 - **Design file** is a CSV file which contains the `sample`, `group` and `timepoint` columns. The `timepoint` column should contain the names of the time-points, whcih should be ordered. For example, `month zero`, `month 3`, `month 6` and `month 12`, became `M0`, `M03`, `M06`, and `M12`.<br>
 - **Edges (network) file** is a CSV file with the network represented as an edge list, including the `fromNode`, `toNode`, `weight`, `timepoint`, and `group` columns. We recommend using SYMBOL gene identifiers for `fromeNode` and `toNode`. The `Edges file` can be obtained from the function `exportNetworkToCytoscape()` of the `WGCNA` package, or from any graphical package in `R` such as `graph` or `igraph`.<br>
@@ -65,10 +65,12 @@ After you submit all files (press `Submit` button of the page `Upload your data`
 ## 3. KEGG pathway and GO term subnetwork analysis:
 This is the second tab of the app.<br>
 
-### 3.1. Biological example:
-Our first goal is to check the evolution of the dynamic networks inside a given pathway or GO term along time ni our example (default) dataset.<br>
+### 3.1. Goal and example:
+Our first goal is to check the evolution of the dynamic networks inside a given pathway or GO term along time in our example (default) dataset.<br>
 
-From our study case, we have chosen the `COPD smoker` group, the `Human cytomegalovirus infection` KEGG pathway, and the `genes to genes` view, to show an example of DynBioNet visualizations.
+From our study case, we have chosen the `COPD smoker` group, the `Human cytomegalovirus infection` KEGG pathway, and the `genes to genes` view, to show an example of DynBioNet visualizations.<br>
+
+The following is an example of the plots generated under such conditions:<br>
 
 <img src="README.assets/Human-cytomegalovirus-infection.png" alt="Human-cytomegalovirus-infection" style="zoom: 25%;" />
 
