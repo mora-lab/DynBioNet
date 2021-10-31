@@ -109,7 +109,7 @@ Results can be found at the bottom of the shiny interface.
 - **Edge information**: All edge information in the subnetwork. 
 
 ### 3.4.3. Network coordination scores:<br>
-*Here:* The tab collect genes number, KEGG number, GO number, edges number and others.
+*Here:* Network coordination is a simple measure of the connectivity of a subnetwork along time. Here we introduce: C1 (Number of gene-gene edges), C2 (Sum of gene-gene edge weights), C3 (Clustering coefficient of gene-gene edges), C4 (Number of GO and KEGG terms), and C5 (Average number of genes per GO and KEGG term).
 
 ### 3.5. Download:<br>
 The `Download` tab allows the user to download excel files of `gene nodes`, `KEGG nodes`, `GO nodes`, and `edges` information, for the subnetwork.
@@ -144,11 +144,10 @@ Equivalent to part `3.4. Node information`.
 
 ### 4.5. Edge information.<br>
 
-**Edge information** stores all edge information in the network. 
+**Edge information** displays all edge information in the network. 
 
 ### 4.6. Network coordination scores.<br>
-
-*Here:* The tab collect genes number, KEGG number, GO number, edges number and others.
+*Here:* Network coordination is a simple measure of the connectivity of a subnetwork along time. Here we introduce: C1 (Number of gene-gene edges), C2 (Sum of gene-gene edge weights), C3 (Clustering coefficient of gene-gene edges), C4 (Number of GO and KEGG terms), and C5 (Average number of genes per GO and KEGG term).
 
 ### 4.7. Time neighborhood membership.<br>
 
@@ -195,4 +194,4 @@ Antonio Mora: antoniocmora@gzhmu.edu.cn<br>
 * `ui folder`: This folder contains one R script for each of the current tabs of DynBioNet, which contain the main computations for each tab. If you add a new tab, please add a new R file here.<br>
 * `Functions folder:` This folder contains all the functions for very specific tasks such as getting data or plotting data, which are called by the main routines. Place here any new function that will be called by the main routines.<br>
 
-*Last updated: Oct.30th, 2021*
+*Last updated: Oct.31st, 2021*
