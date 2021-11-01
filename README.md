@@ -33,9 +33,9 @@ After running the previous commands, open your web browser and visit http://loca
 
 > Note that the scripts of DynBioNet are located in the `/srv/shiny-server/` folder in the container.
 
-### 1.3. From Virtual Machine: https://zenodo.org/deposit/5539480<br>
+### 1.3. From Virtual Machine: https://zenodo.org/record/5539480#.YX--Lp7P2Uk<br>
 
-If you have installed the 'VirtualBox' Virtual Machine (here, [how to install VirtualBox](https://github.com/mora-lab/installing/tree/main/virtualbox)), download the file `DynBioNet-VM.ova` from [Here: Zenodo]() and import this appliance to 'VirtualBox' (here, [how to import an .ova file](https://github.com/mora-lab/installing/tree/main/virtualbox_impo_expo)). 
+If you have installed the 'VirtualBox' Virtual Machine (here, [how to install VirtualBox](https://github.com/mora-lab/installing/tree/main/virtualbox)), download the file `DynBioNet-VM.ova` from [Here: Zenodo](https://zenodo.org/record/5539480#.YX--Lp7P2Uk) and import this appliance to 'VirtualBox' (here, [how to import an .ova file](https://github.com/mora-lab/installing/tree/main/virtualbox_impo_expo)). 
 
 After starting this Virtual Machine, log in using `moralab` as user and password, open the Firefox browser, and you will see the DynBioNet interface. As an alternative, visit the address http://localhost:3838/DynBioNet/.
 
