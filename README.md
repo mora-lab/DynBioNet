@@ -1,12 +1,12 @@
 <img src="https://github.com/mora-lab/mora-lab.github.io/blob/master/picture/MORALAB_Banner.png">
 
 # DynBioNet
-'DynBioNet' is a shiny app to visualize and explore dynamic (temporal) biological networks.<br>
+**DynBioNet** is a shiny app to visualize and explore dynamic (temporal) biological networks.<br>
 
-> For more details on the importance of dynamic biological networks and some applications of 'DynBioNet', see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding development and disease through visualization and analysis of dynamic biological networks (Under review).<br>
+> For more details on the importance of dynamic biological networks and some applications of **DynBioNet**, see: Huang, X. and Mora, A. (2021), DynBioNet –Understanding development and disease through visualization and analysis of dynamic biological networks (Under review).<br>
 
 ## 1. Installing DynBioNet:
-There are three different ways to run DynBioNet:
+There are three different ways to run **DynBioNet**:
 
 ### 1.1. From Github (using R):  https://github.com/mora-lab/DynBioNet<br>
 
@@ -16,11 +16,11 @@ library(shiny)
 shiny::runApp("mora-lab/DynBioNet")
 ```
 
-The previous commands will download data from [zenodo](https://zenodo.org/record/5336148#.YXoqPp7P2Uk) each time you run this app. Therefore, we recommend you to use the R/Github implementation through `shiny::runApp()` after downloading the Github repository in order to avoid the need to download data each time.
+The previous commands will download data from [Zenodo](https://zenodo.org/record/5336148#.YX--kp7P2Uk) each time you run this app. Therefore, we recommend you to use the R/Github implementation through `shiny::runApp()` after downloading the Github repository in order to avoid the need to download data each time.
 
 ### 1.2. From Docker: https://hub.docker.com/r/moralab/dynbionet<br>
 
-If you have installed Docker (here, [how to install Docker](https://github.com/mora-lab/installing/tree/main/docker)), run the following commands in a terminal:
+If you have installed `Docker` (here, [how to install Docker](https://github.com/mora-lab/installing/tree/main/docker)), run the following commands in a terminal:
 
 ```shell
 sudo docker run -d \
@@ -31,31 +31,35 @@ sudo docker run -d \
 
 After running the previous commands, open your web browser and visit http://localhost:3838/DynBioNet/ to use the shiny app.<br>
 
-> Note that the scripts of DynBioNet are located in the `/srv/shiny-server/` folder in the container.
+> Note that the scripts of **DynBioNet** are located in the `/srv/shiny-server/` folder in the container.
 
 ### 1.3. From Virtual Machine: https://zenodo.org/record/5539480#.YX--Lp7P2Uk<br>
 
-If you have installed the 'VirtualBox' Virtual Machine (here, [how to install VirtualBox](https://github.com/mora-lab/installing/tree/main/virtualbox)), download the file `DynBioNet-VM.ova` from [Here: Zenodo](https://zenodo.org/record/5539480#.YX--Lp7P2Uk) and import this appliance to 'VirtualBox' (here, [how to import an .ova file](https://github.com/mora-lab/installing/tree/main/virtualbox_impo_expo)). 
+If you have installed the 'VirtualBox' Virtual Machine (here, [how to install VirtualBox](https://github.com/mora-lab/installing/tree/main/virtualbox)), download the file `DynBioNet-VM.ova` from [Zenodo](https://zenodo.org/record/5539480#.YX--Lp7P2Uk) and import this appliance to 'VirtualBox' (here, [how to import an .ova file](https://github.com/mora-lab/installing/tree/main/virtualbox_impo_expo)). 
 
 After starting this Virtual Machine, log in using `moralab` as user and password, open the Firefox browser, and you will see the DynBioNet interface. As an alternative, visit the address http://localhost:3838/DynBioNet/.
 
-> The scripts of DynBioNet are located in the `/srv/shiny-server/DynBioNet/` folder.
+> The scripts of **DynBioNet** are located in the `/srv/shiny-server/DynBioNet/` folder.
+
+> All three implementations of **DynBioNet** start with a default dataset that will be explained below.
 
 ## 2. Uploading data:
 This is the first tab of the app.<br>
 
 ### 2.1. Biological example (default data):
-Our example (default data in the software) is a dynamic coexpression network built with expression data from three groups (non-smokers, healthy smokers, and smokers with COPD) and four time-points (0, 3, 6, and 12 months). The original transcriptomic data comes from: O'Beirne, S.L., et al. Ambient Pollution-related Reprogramming of the Human Small Airway Epithelial Transcriptome. Am J Respir Crit Care Med 2018;198(11):1413-1422 ([html](https://www.atsjournals.org/doi/10.1164/rccm.201712-2526OC), [pdf](https://www.atsjournals.org/doi/pdf/10.1164/rccm.201712-2526OC)).<br>
+Our example (default data in the software) is a dynamic coexpression network built with expression data from three experimental groups (non-smokers, healthy smokers, and smokers with COPD) and four time-points (0, 3, 6, and 12 months). The original transcriptomic data comes from: O'Beirne, S.L., et al. Ambient Pollution-related Reprogramming of the Human Small Airway Epithelial Transcriptome. Am J Respir Crit Care Med 2018;198(11):1413-1422 ([html](https://www.atsjournals.org/doi/10.1164/rccm.201712-2526OC), [pdf](https://www.atsjournals.org/doi/pdf/10.1164/rccm.201712-2526OC)).<br>
 
 ### 2.2. The input files:
-DynBioNet receives four input files: `design file`, `edges (network) file`, `expression data file`, and `module file`.
+**DynBioNet** receives four input files: `design file`, `edges (network) file`, `expression data file`, and `module file`.
 
 - **Design file** is a CSV file which contains the `sample`, `group` and `timepoint` columns. The `timepoint` column should contain the names of the time-points, which should be ordered. In our example, `month zero`, `month 3`, `month 6` and `month 12`, became `M0`, `M03`, `M06`, and `M12`.<br>
 - **Edges (network) file** is a CSV file with the network represented as an edge list, including the `fromNode`, `toNode`, `weight`, `timepoint`, and `group` columns. We recommend using SYMBOL gene identifiers for `fromeNode` and `toNode`. The `Edges file` can be obtained from the function `exportNetworkToCytoscape()` of the `WGCNA` package, or from any graphical package in `R` such as `graph` or `igraph`.<br>
 - **Expression data file** includes gene expression data that will be used to build the violin plot of each gene. The first column is `gene`, which uses the same gene identifier than the `edges file`.<br>
 - **Module file** is a description of the subnetworks that the user wants to analyze, and it is mainly used to plot the alluvial diagram. The module file has the `nodeName`, `timepoint`, `group` and `module` columns.<br>
 
-We have built some examples of input files at https://zenodo.org/record/5336148#.YXoqPp7P2Uk. The four input files are called `example-design.csv`, `example-edges.csv`, `example-exprs.csv`, and `example-module.csv`, respectively. After you submit all files (press `Submit` button of the page `Upload your data`), an sql database will be built by the software. You can find an example of such database at https://zenodo.org/record/5336148#.YXoqPp7P2Uk, which is called `COPD-data.sqlite`. Finally, you can find an additional sql file, called `kegg_GO_info.sqlite`, which contains annotation info from KEGG and GO.<br>
+We have built some examples of input files at [DynBioNet data -Zenodo](https://zenodo.org/record/5336148#.YX--kp7P2Uk). The four input files are called `example-design.csv`, `example-edges.csv`, `example-exprs.csv`, and `example-module.csv`, respectively. After you submit all files (press `Submit` button of the page `Upload your data`), an `sql` database will be built by the software. You can find an example of such database at [DynBioNet data -Zenodo](https://zenodo.org/record/5336148#.YX--kp7P2Uk), which is called `COPD-data.sqlite`. Finally, you can find an additional `sql` file, called `kegg_GO_info.sqlite`, which contains annotation info from KEGG and GO.<br><br>
+
+For all three implementations (`Github`, `Docker`, `VirtualBox`), we have already created the `sql` database and produced results. However, if you want to recreate the example by yourself (create a new project, upload the four example files, submit them, and produce your own results), there are two options: (i) For the Docker and VirtualBox implementations, the four datasets of the example are already included. You can upload them from the first tab, as explained below, and press `Submit`. (ii) For the Github version, you must download the files from [Zenodo](https://zenodo.org/record/5336148#.YX--kp7P2Uk), and then you repeat the process.<br>
 
 ### 2.3. Browsing the four input files from DynBioNet:
 After you submit all files (press `Submit` button of the page `Upload your data`), the corresponding files will be displayed as tables on the right side of the screen. Note that the size of each input file has been set to a maximum of 500MB in the `global.R` file.<br><br>
